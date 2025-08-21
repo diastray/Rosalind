@@ -1,4 +1,4 @@
-f = open("C:/projects/code/Rosalind/bioinfo_stronghold/rosalind_dna.txt", "r")
+f = open("C:/projects/code/Rosalind/bioinfo_stronghold/input/rosalind_dna.txt", "r")
 seq = f.readline().strip()
 
 base = [0, 0, 0, 0]
