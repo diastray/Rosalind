@@ -23,7 +23,6 @@ codon = {
 protein = []
 for i in range(0, len(mrna), 3):
     code = mrna[i:i+3]
-    #print(code)
     if codon[code] != "Stop":
         protein.append(codon[code])
     else:
