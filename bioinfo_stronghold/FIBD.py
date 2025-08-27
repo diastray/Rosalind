@@ -19,3 +19,5 @@ else:
     for i in range(m+1, n):
         log[i] = log[i-1] + log[i-2] - log[i-m-1]
     print(log[n-1])
+
+f.close()

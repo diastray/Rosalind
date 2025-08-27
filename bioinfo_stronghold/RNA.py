@@ -6,3 +6,4 @@ dseq = f.readline().strip()
 dseq = dseq.replace('T', 'U')
 
 print(dseq)
+f.close()

@@ -9,3 +9,4 @@ for i in range(0, len(seq1)):
         hamm += 1
 
 print(hamm)
+f.close()

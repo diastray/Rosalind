@@ -14,3 +14,4 @@ for i in range(len(seq)-1, -1, -1):
 
 seq.reverse()
 print("".join(seq))
+f.close()

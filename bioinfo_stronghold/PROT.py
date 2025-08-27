@@ -28,3 +28,5 @@ for i in range(0, len(mrna), 3):
     else:
         break
 print("".join(protein))
+
+f.close()

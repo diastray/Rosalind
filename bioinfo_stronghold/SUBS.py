@@ -43,4 +43,4 @@ while i < len(seq):
             j = F[j-1]
         else:
             i += 1
-        
+f.close()
