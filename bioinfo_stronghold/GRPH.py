@@ -20,7 +20,6 @@ with open("C:/projects/code/Rosalind/bioinfo_stronghold/input/rosalind_grph.fast
 
     nodes[name] = full_seq
 
-
 adj_list = [[] for _ in range(len(nodes))]
 i = 0
 for node in nodes:
