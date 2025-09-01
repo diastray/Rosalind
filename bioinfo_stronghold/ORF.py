@@ -1,6 +1,7 @@
 # data read
 f = open("C:/projects/code/Rosalind/bioinfo_stronghold/input/rosalind_orf.fasta", "r")
-seq = f.readline().strip()
+mrna = f.readline().strip()
+protein = set()
 
 # codon table
 codon = {
@@ -22,23 +23,33 @@ codon = {
     "UGG" : "W", "CGG" : "R", "AGG" : "R", "GGG" : "G" 
 }
 
-mrna = seq.replace("T", "U")
-protein = ""
-middle_AUG = 0
+mrna = mrna.replace("T", "U")
 
-i = 0
-j = 0
-# find AUG
-while i in range(0, len(mrna)):
-    if mrna[i:i+3] == "AUG":
-        j = i
-        # leftward transcription
-        while codon[mrna[j:j+3]] != "Stop":
-            if mrna[j:j+3] == "AUG":
-                middle_AUG = j
-            protein += codon[mrna[j:j+3]]
-    i = j
-    print(protein)
-# find AUG
+def recursive_transcription(rna, start):
+    protein_seq = "M"
+    for i in range(start+3, len(rna)-2, 3):
+        if codon[rna[i:i+3]] != "Stop":
+            protein_seq += codon[rna[i:i+3]]
+            if codon[rna[i:i+3]] == "AUG":
+                recursive_transcription(rna[i:], i)
+        else:
+            protein.add(protein_seq)
+            return
+
+complementary_mrna = mrna.translate(str.maketrans("ACGU", "UGCA"))[::-1]
+# print(complementary_mrna)
+
+for k in range(0, len(mrna)-2):
+    if mrna[k:k+3] == "AUG":
+        recursive_transcription(mrna, k)
+
+for l in range(0, len(complementary_mrna)-2):
+    if complementary_mrna[l:l+3] == "AUG":
+        recursive_transcription(complementary_mrna, l)
+
+for p in protein:
+    print(p)
+
+
 
 
